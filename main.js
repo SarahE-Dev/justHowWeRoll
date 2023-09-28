@@ -330,30 +330,30 @@ function mean(arr){
 }
 
 function median(arr){
-  const { length } = arr;
-  arr.sort((a, b) => a - b);
-  if (length % 2 === 0) {
-    return (arr[length / 2 - 1] + arr[length / 2]) / 2;
-  }
-  return arr[(length - 1) / 2];
+  let mid = Math.floor(arr.length / 2)
+  let nums = arr.sort((a, b) => a - b);
+  return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2
 }
 
 function mode(arr){
-  const mode = {};
-  let max = 0, count = 0;
-  for(let i = 0; i < arr.length; i++) {
-    let item = arr[i];
-    if(mode[item]) {
-      mode[item]++;
-    } else {
-      mode[item] = 1;
-    }
-    if(count < mode[item]) {
-      max = item;
-      count = mode[item];
+  let object = {}
+  for(let i=0; i < arr.length; i++){
+    if(object[arr[i]]){
+      object[arr[i]] = 1
+    }else{
+      object[arr[i]] = 1
     }
   }
-  return max;
+  let max = 0;
+  let maxKey = 0;
+  Object.keys(object).forEach(key => {
+    let value = object[key]
+    if(value > max){
+      max = value
+      maxKey = key
+    }
+  })
+  return maxKey
 }
 
 
