@@ -103,8 +103,8 @@ doubles.addEventListener('click', function(){
       clearInterval(intervalID)
       setImage(thisNum)
       setImage2(thisNum2)
-      doubleSixes.push(thisNum);
-      doubleSixes.push(thisNum2);
+      let roll = thisNum + thisNum2
+      doubleSixes.push(roll);
       doublesMean.innerText = mean(doubleSixes)
       doublesMedian.innerText = median(doubleSixes)
       doublesMode.innerText = mode(doubleSixes)
@@ -339,7 +339,7 @@ function mode(arr){
   let object = {}
   for(let i=0; i < arr.length; i++){
     if(object[arr[i]]){
-      object[arr[i]] = 1
+      object[arr[i]]++
     }else{
       object[arr[i]] = 1
     }
